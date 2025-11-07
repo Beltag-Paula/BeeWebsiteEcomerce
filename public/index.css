@@ -1,0 +1,274 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  
+  grid-template-areas:
+    "header header"
+    "nav nav"
+    "content content"
+    "footer footer";
+  grid-template-columns: 2fr 2fr;
+  grid-template-rows: auto;
+  gap: 10px;
+  padding: 10px;
+}
+
+.nav a,
+.dropdown-button {
+  border:0px;
+  color: #171717;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+
+.nav a:hover,
+.dropdown-button:hover {
+  background-color: #77aae0;
+  color: black;
+}
+
+.nav a.active {
+  background-color: #04aa6d;
+  color: white;
+}
+.content > article > main,
+.content > article > h2 {
+  padding: 20px;
+}
+
+
+.dropdown-button:hover{
+  cursor: pointer;
+}
+
+.content > article:nth-child(even) {
+  background-color: lightblue;
+  display: grid;
+  grid-template-areas:
+    "articleTitle articleTitle articleTitle"
+    "articleContent articleContent img"
+    "articleContent articleContent img";
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 10px;
+}
+
+.content > article:nth-child(odd) {
+  background-color: lightgreen;
+  display: grid;
+  grid-template-areas:
+    "articleTitle articleTitle articleTitle"
+    "img articleContent articleContent"
+    "img articleContent articleContent";
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 10px;
+}
+
+article > h2 {
+  grid-area: articleTitle;
+}
+article > main {
+  grid-area: articleContent;
+}
+
+.header {
+  grid-area: header;
+  background-color: yellow;
+  padding: 20px;
+  text-align: center;
+}
+
+.nav {
+  grid-area: nav;
+  overflow: hidden;
+  background-color: #f4f4f4;
+  padding: 10px;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.content {
+  grid-area: content;
+  padding: 20px;
+}
+
+.footer {
+  bottom: 0px;
+  grid-area: footer;
+  background-color: #c61b1b;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  display: grid;
+  grid-template-areas:
+    "aboutUs maps instagramPage"
+    "emailContact emailContact emailContact"
+    "copyright copyright copyright";
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 8px;
+}
+
+.footer > .aboutUs {
+  grid-area: aboutUs;
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+}
+
+.footer > .maps {
+  grid-area: maps;
+}
+
+.footer > .instagramPage {
+  grid-area: instagramPage;
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  padding: 0%;
+}
+
+.footer > .emailContact {
+  grid-area: emailContact;
+}
+
+.footer > .copyright {
+  grid-area: copyright;
+}
+
+.footer > .instagramPage > .instagramPosts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.center-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Optional additional styles */
+a {
+  display: block;
+}
+
+.dropdown-produse > .dropdown-container {
+  padding: 10px;
+  width: 17%;
+  display: none;
+  position: absolute;
+  background-color: red;
+  z-index: 998;
+}
+
+.dropdown-produse:hover .dropdown-container {
+  display: block;
+}
+
+.dropdown-button >.form-popup{
+  display:none;
+}
+
+.form-container{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+  "h1"
+  "email"
+  "password"
+  "btns";
+    gap: 20px; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    color: #333;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    z-index: 999;
+}
+
+.form-container >.h1{
+  grid-area: h1;
+  font-size:30px;
+}
+
+.form-container >.email{
+  grid-area: email;
+  display: grid;
+  text-align: right;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-container >.password{
+  grid-area: password;
+  display: grid;
+  text-align: right;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-container >.btns{
+  display: grid;
+  grid-area: btns;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-container >.btns > button {
+  border-radius: 10px;
+  padding: 6px 12px;
+  background-color: #77aae0;
+  color: white;
+  font-weight: bold;
+  border: 0px;
+
+}
+
+.form-container >.btns > button:hover{
+  filter: invert();
+}
+
+.navCart > #myCart{ 
+  font-size: 130%;
+}
+.navCart { 
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  z-index: 997;
+}
+
+.cartContent {
+  display: none;
+  position: fixed;
+  background-color: white;
+  width: 590px;
+  height: 900px;
+  padding: 10px 20px;
+  border: 10px;
+  top: 143px;
+  right: 30px;
+}
+
+#btnCancel2{
+  position: absolute;
+  right:30px;
+  font-size: 20px;
+}

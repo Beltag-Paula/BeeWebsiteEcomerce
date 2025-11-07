@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="media.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="produse.css" />
+    <title>Produse</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">MY BEE HEADER</header>
+
+      <nav class="nav">
+        <a href="index.html">Acasa</a>
+
+        <div class="dropdown-produse">
+          <a class="dropdown-button" href="produse.html">Produse</a>
+          <div class="dropdown-container">
+            <div class="row">
+              <div class="column">
+                <a onclick="filterProducts('P1'); return false;">P1</a>
+                <a onclick="filterProducts('P2'); return false;">P2</a>
+                <a onclick="filterProducts('P3'); return false;">P3</a>
+                <a onclick="filterProducts('all'); return false;">Show all</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="contact.html">Contact</a>
+
+        <div class="dropdown-button">
+          <div class="openButton" id="openButton">Account</div>
+          <!-- The form -->
+          <div class="form-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+              <h1>Login</h1>
+              <div class="email">
+                <label for="email"><b>Email</b></label>
+                <input
+                  type="text"
+                  placeholder="Enter Email"
+                  name="email"
+                  required
+                />
+              </div>
+
+              <div class="password">
+                <label for="psw"><b>Password</b></label>
+                <input
+                  type="password"
+                  placeholder="Enter Password"
+                  name="psw"
+                  required
+                />
+              </div>
+
+              <div class="btns">
+                <button type="submit" class="btn">Login</button>
+                <button type="button" class="btncancel" id="btnCancel">
+                  Close
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="navCart">
+          <i class="fa fa-shopping-cart" id="myCart" aria-hidden="true"></i>
+          <div class="cartContent" id="cartContent">
+            <i class="fa fa-times" aria-hidden="true" id="btnCancel2"></i>
+            <h3>Your Cart:</h3>
+            <br />
+            <hr />
+            <div id="productsPlacerInCart">
+              Your products:
+              <table id="cartProductsTable">
+
+              </table>
+            </div>
+            <div class="sum">Total sum:</div>
+            <button class="buyButton">Buy:</button>
+          </div>
+        </div>
+      </nav>
+
+      <main class="content">
+        <div class="produsePage"></div>
+      </main>
+
+      <footer class="footer">
+        <div class="aboutUs">
+          <h3>About us</h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam
+            inventore similique incidunt eveniet mollitia nihil. Suscipit,
+            voluptate deleniti! Ipsam nulla perferendis exercitationem, expedita
+            adipisci saepe eligendi maxime ipsum aliquam quod.
+          </p>
+        </div>
+        <div class="instagramPage">
+          <a href=""><h3>Follow on Insta</h3></a>
+          <div class="instagramPosts">
+            <img src="https://fakeimg.pl/100x100" alt="Some photo post" />
+            <img src="https://fakeimg.pl/100x100" alt="Some photo post" />
+            <img src="https://fakeimg.pl/100x100" alt="Some photo post" />
+            <img src="https://fakeimg.pl/100x100" alt="Some photo post" />
+          </div>
+        </div>
+
+        <div class="maps">
+          <div
+            style="
+              overflow: hidden;
+              max-width: 100%;
+              width: 100%;
+              height: 300px;
+            "
+          >
+            <div
+              id="embed-map-canvas"
+              style="height: 100%; width: 100%; max-width: 100%"
+            >
+              <iframe
+                style="height: 100%; width: 100%; border: 0"
+                frameborder="0"
+                src="https://www.google.com/maps/embed/v1/place?q=Saveni&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+              ></iframe>
+            </div>
+            <a
+              class="google-map-html"
+              rel="nofollow"
+              href="https://www.bootstrapskins.com/themes"
+              id="make-map-infor-mation"
+              >premium bootstrap themes</a
+            ><style>
+              #embed-map-canvas img {
+                max-height: none;
+                max-width: none !important;
+                background: none !important;
+              }
+            </style>
+          </div>
+        </div>
+
+        <div class="emailContact">
+          <p>
+            Nu stiu: Ceva nume<br />
+            <a href="mailto:ceva_nume@example.com">ceva_nume@example.com</a>
+          </p>
+        </div>
+
+        <small class="copyright">
+          Copyright © 2025 . All Rights Reserved.</small
+        >
+      </footer>
+    </div>
+    <!--this div contains header, nav, main and footer-->
+
+    <script>
+      function openForm(id) {
+        document.getElementById(id).style.display = "block";
+      }
+
+      function closeForm(id) {
+        document.getElementById(id).style.display = "none";
+      }
+
+      document
+        .getElementById("openButton")
+        .addEventListener("click", () => openForm("myForm"));
+
+      document
+        .getElementById("btnCancel")
+        .addEventListener("click", () => closeForm("myForm"));
+
+      document
+        .getElementById("myCart")
+        .addEventListener("click", () => openForm("cartContent"));
+
+      document
+        .getElementById("btnCancel2")
+        .addEventListener("click", () => closeForm("cartContent"));
+
+      function filterProducts(category) {
+        let produse = document.querySelectorAll(".produs");
+
+        for (const element of produse) {
+          if (category === "all" || element.classList.contains(category)) {
+            element.style.display = "grid";
+          } else {
+            element.style.display = "none";
+          }
+        }
+      }
+
+      ////////////////////////////////////////////////////////////
+      //This is the part of code where we take all the products from produsePage class and add them to the cart
+      
+
+
+      // create an array to represent cart's State - array of products.
+      // create a function to deserialize an array of products from localStorage into that array at page load
+      // create a function that serializes the products and stores them into localStorage when a product is added to the cart
+      // JSON.stringify / JSON.parse
+
+      const produsePage = document.querySelector(".produsePage");
+      const cartProductsTable = document.querySelector("#cartProductsTable");
+      // reference to cart's total
+      let totalSum =0;
+      
+      class Produs {
+
+        static #lastId = 0;
+        id;
+        constructor(name, image, price, category) {
+          this.id = ++Produs.#lastId;
+          this.name = name;
+          this.image = image;
+          this.price = price;
+          this.category = category;
+        }
+
+        addProductToCart = (event)=> {
+          // append to total in cart's total
+         
+          this.renderInCart(cartProductsTable);
+        }
+
+        renderInCart(targetElement){
+          const produs=document.createElement("tr");
+          const name= document.createElement("td");
+          name.appendChild(document.createTextNode(this.name));
+          const price=document.createElement("td");
+          price.appendChild(document.createTextNode(this.price));
+          const image= document.createElement("td");
+
+          image.alt="Miere";
+          image.style.width="64px";
+          image.style.height="64px";
+          image.style.background=`url(${this.image})`;
+          image.style.backgroundSize="cover";
+
+          // add remove from cart icon and attach event
+          // call functionality to remove the price and remove the element from cart's dom
+
+          produs.append(image, name, price);
+          targetElement.appendChild(produs);
+        }
+
+        render(targetElement) {
+          const produs=document.createElement("div");
+          const heart=document.createElement("i");
+          const image= document.createElement("img");
+          const name= document.createElement("p");
+          const price=document.createElement("p");
+          const cart=document.createElement("i");
+
+          produs.classList.add("produs",this.category);
+
+          heart.classList.add("fa","fa-heart-o","like");
+          produs.appendChild(heart);
+
+          image.width="50%";
+          image.height="50%";
+          image.alt="Miere"
+          image.src=this.image;
+          produs.appendChild(image);
+
+          name.classList.add("name");
+          name.appendChild(document.createTextNode(this.name));
+          produs.appendChild(name);
+
+          price.classList.add("price");
+          price.appendChild(document.createTextNode(this.price));
+          produs.appendChild(price);
+
+          cart.classList.add("fa","fa-cart-plus","buy");
+
+          cart.addEventListener("click", () => this.renderInCart(cartProductsTable));
+          //cart.addEventListener("click", this.addProductToCart);
+
+          produs.appendChild(cart);
+
+          targetElement.appendChild(produs);
+        }
+      }
+      // This is how the div should look like
+      // <div class="produs P2">
+      //   <i class="fa fa-heart-o like"></i>
+      //   <img
+      //     src="/images/miere4.jpg"
+      //     alt="Miere1"
+      //     width="50%"
+      //     height="50%"
+      //   />
+      //   <p class="name">Nume produs aici</p>
+      //   <p class="price">9,00 RON</p>
+      //   <i class="fa fa-cart-plus buy" aria-hidden="true"></i>
+      // </div>
+
+      
+      const produse = [
+        new Produs('Produs 1', '/images/miere1.jpg', 10,'P1'),
+        new Produs('Produs 2', '/images/miere2.jpg', 20,'P2'),
+        new Produs('Produs 3', '/images/miere3.jpg', 30,'P3'),
+        new Produs('Produs 4', '/images/miere4.jpg', 40,'P1'),
+        new Produs('Produs 5', '/images/miere5.jpg', 50,'P2'),
+        new Produs('Produs 6', '/images/miere6.jpg', 60,'P3'),
+      ].forEach(function(produs){
+        produs.render(produsePage);
+      })
+      console.log(produse);
+ 
+    </script>
+  </body>
+</html>

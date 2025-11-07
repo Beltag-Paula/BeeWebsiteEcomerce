@@ -1,0 +1,33 @@
+.content{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr;
+}
+.containerContactForm {display:grid; gap:8px}
+.containerContactForm>input ,textarea{
+  font-size:large;
+  font-weight: 900;
+  border: 2px solid #cda7e6;
+  border-radius: 6px;
+  padding:6px 12px;
+}
+input[type="submit"]{
+  background-color: rgb(53, 121, 160);
+  color: white;
+}
+
+
+input[type="submit"]:hover{
+
+  filter: invert()
+}
+
+.dropdown-produse:hover .dropdown-container {
+  display: block;
+}
+
+.dropdown-button >.form-popup{
+  display:none;
+}
+
+

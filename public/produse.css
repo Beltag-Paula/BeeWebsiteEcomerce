@@ -1,0 +1,59 @@
+.content > .produsePage {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(6,1fr);
+  justify-items: center;
+  gap: 10px;
+}
+
+.produs {
+  display: grid;
+  justify-items: center;
+  border: 1px solid #ddd;
+  padding: 5px;
+  width: 200px;
+  text-align: center;
+  border-radius:12px;
+  box-shadow: 0px 0.3px 20px rgba(0, 0, 0, 0.3);
+  transition: ease-in-out 0.2s;
+}
+
+.produs img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  opacity: 0.7;
+}
+
+.produs:hover > img{
+  opacity: 1;
+}
+.produs:hover {
+  box-shadow: 0px 0.3px 20px rgba(0, 0, 0, 0.8);
+}
+.produs > .like:hover {
+  font-size: 36px;
+  color:red;
+  cursor: pointer;
+}
+.produs > .like {
+  font-size: 24px;
+  transition: ease-in-out 0.1s;
+}
+.produs .like {
+  position: absolute;
+  color: white;
+  justify-self: right;
+  padding: 6px;
+  font-weight: 900;
+}
+
+.produs .buy {
+  margin-top: 0px;
+}
+
+.produs .buy:hover{
+  font-size: 24px;
+  color:green;
+  cursor: pointer;
+}

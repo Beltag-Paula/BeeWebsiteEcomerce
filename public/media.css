@@ -1,0 +1,65 @@
+@media (width <= 900px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+  .content > .beeImage {
+    display: none;
+  }
+  .content > .containerContact > form {
+    background: url("./bee-logo.jpg") no-repeat;
+    background-size: contain;
+  }
+  .content > .containerContact > form > textarea,
+  .content > .containerContact > form > input {
+    opacity: 0.8;
+  }
+
+  .content > article:nth-child(n) {
+    grid-template-areas:
+      "articleTitle"
+      "img"
+      "articleContent";
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .nav {
+    grid-template-columns: 1fr !important;
+  }
+  .nav > .dropdown-produse > .dropdown-container {
+    position: relative;
+    width: 100%;
+    padding: 0px;
+  }
+
+  .footer {
+    grid-template-areas:
+      "aboutUs"
+      "maps"
+      "instagramPage"
+      "emailContact"
+      "copyright";
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .content > .produsePage {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1400px) {
+  .content > .produsePage {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+@media (width <=700px){
+  .cartContent{
+    width:400px;
+    height:700px;
+    right:20px;
+  }
+}
